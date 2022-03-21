@@ -31,9 +31,11 @@ export function draw(board: HTMLElement): void {
   });
 }
 
-export function onSnk(food: IBodySeg): boolean {
-  return body.some((seg) => {
-    return overlapPos(food, seg);
+export function onSnk(pos: IBodySeg, { ignoreHead = false } = {}): boolean {
+  return body.some((seg, index) => {
+    if ((ignoreHead && index === 0) || (ignoreHead && index === 1))
+      return false; //! problem solved by ignoring sec index
+    return overlapPos(pos, seg);
   });
 }
 export function expandSnk(EXPAND: number): void {
@@ -49,4 +51,11 @@ function addSeg(): void {
     body.push({ ...body[body.length - 1] });
   }
   newBodySegs = 0;
+}
+
+export function getSnkHead(): IBodySeg {
+  return body[0];
+}
+export function snkBitSnk(): boolean {
+  return onSnk(body[0], { ignoreHead: true });
 }

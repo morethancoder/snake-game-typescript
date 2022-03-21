@@ -18,11 +18,11 @@ body {
 }
 .snake {
   background-color: #42b9e8;
-  border: 0.2vmin solid #ffffff;
-  border-radius: 35%;
+  border: 0.2vmin solid #000000;
+  border-radius: 50%;
 }
 .food {
   background-color: rgb(241, 252, 87);
   border-radius: 50%;
-  border: 0.15vmin solid pink;
+  border: 0.15vmin solid rgb(0, 0, 0);
 }
